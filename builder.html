@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="https://miro.com/app/static/styles.1.0.css" />
+  </head>
+
+  <body>
+    <h2>Teams</h2>
+    <div class="scrollable-container">
+      <button id="addRow" class="add-row-button miro-btn miro-btn--primary" onclick="addRowInput('')">New Team</button>
+      <div id="rows"></div>
+    </div>
+    <div class="row">
+      <button id="submit" class="build-button miro-btn miro-btn--primary">Build template</button>
+    </div>
+    <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+    <script src="data/cards.js"></script>
+    <script src="src/builder.js"></script>
+    <script>
+      const rowsContainer = document.getElementById('rows')
+
+      addRowInput('Team 1')
+      addRowInput('Team 2')
+      addRowInput('Team 3')
+      addRowInput('Team 4')
+
+      document.getElementById('submit').addEventListener('click', () => drawTemplate(getTeams()))
+
+      function addRowInput(value) {
+        const row = document.createElement('div')
+        row.classList.add('miro-input-field')
+        rowsContainer.appendChild(row)
+
+        const rowGroup = document.createElement('div')
+        row.classList.add('row')
+        row.classList.add('miro-input-group')
+        row.classList.add('miro-input-group--small')
+        row.appendChild(rowGroup)
+
+        //create input
+        const input = document.createElement('input')
+        input.type = 'text'
+        input.classList.add('miro-input')
+        input.classList.add('miro-input--primary')
+        input.value = value
+        rowGroup.appendChild(input)
+
+        //create delete button
+        const button = document.createElement('button')
+        button.textContent = 'Delete'
+        button.classList.add('miro-btn')
+        button.classList.add('miro-btn--primary')
+        button.classList.add('delete-button')
+        button.addEventListener('click', () => {
+          row.remove()
+        })
+        row.appendChild(button)
+      }
+
+      function getTeams() {
+        return Array.from(rowsContainer.querySelectorAll('input')).map((el) => el.value)
+      }
+    </script>
+  </body>
+</html>
