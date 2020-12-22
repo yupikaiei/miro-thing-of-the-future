@@ -9,7 +9,6 @@ const whatIfHeight = 100
 const teamFrameWidth = 800
 const teamFrameHeight =
   descriptionHeight + sketchHeight + whatIfHeight + cardSize * 2 + 300
-const APP_ID = 'YOUR APP ID'
 
 function getRandom(array) {
   return array[Math.floor(Math.random() * array.length)]
@@ -109,6 +108,7 @@ function generateWhatIfSection(teamIndex, colX, y, widgets) {
 }
 
 async function drawTemplate(teams) {
+  console.log('builder APP ID', APP_ID)
   console.log(teams)
   let widgets = []
   for (let colIdx = 0; colIdx < teams.length; colIdx++) {
@@ -230,7 +230,7 @@ function getImage(type, id, x, y) {
       },
     },
     type: 'image',
-    url: `${window.location.origin}/images/${type}.png`,
+    url: `${window.location.origin}/public/images/${type}.png`,
     x: x,
     y: y,
   }

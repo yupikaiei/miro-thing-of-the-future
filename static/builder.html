@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title></title>
-    <link rel="stylesheet" href="src/style.css" />
+    <link rel="stylesheet" href="public/style.css" />
     <link rel="stylesheet" href="https://miro.com/app/static/styles.1.0.css" />
   </head>
 
@@ -15,9 +15,12 @@
     <div class="row">
       <button id="submit" class="build-button miro-btn miro-btn--primary">Build template</button>
     </div>
+    <script>
+      const APP_ID = "{{CLIENT_ID}}";
+    </script>
     <script src="https://miro.com/app/static/sdk.1.1.js"></script>
-    <script src="data/cards.js"></script>
-    <script src="src/builder.js"></script>
+    <script src="public/js/cards.js"></script>
+    <script src="public/js/builder.js"></script>
     <script>
       const rowsContainer = document.getElementById('rows')
 
